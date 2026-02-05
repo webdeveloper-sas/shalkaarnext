@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-indigo: #2a1555;
+  --color-sienna: #a0522d;
+  --color-cream: #f5f3f0;
+  --color-dark: #1a1a1a;
+  --color-gold: #d4a574;
+}
+
+* {
+  @apply box-border;
+}
+
+html {
+  @apply scroll-smooth;
+}
+
+body {
+  @apply bg-brand-cream text-brand-dark font-sans antialiased;
+}
+
+/* Utility Classes */
+.container-responsive {
+  @apply px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.transition-all {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+/* Focus States */
+button:focus-visible,
+a:focus-visible {
+  @apply outline-2 outline-offset-2 outline-brand-indigo;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  @apply outline-2 outline-offset-2 outline-brand-indigo;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-brand-cream;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-sienna rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-brand-indigo;
+}

@@ -1,0 +1,21 @@
+{
+  "name": "@shalkaarnext/api-client",
+  "version": "1.0.0",
+  "description": "Typed API client for SHALKAAR platform",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint src/**/*.ts",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@shalkaarnext/shared-types": "workspace:*",
+    "@shalkaarnext/shared-utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.3"
+  }
+}

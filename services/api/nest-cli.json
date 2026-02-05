@@ -1,0 +1,13 @@
+{
+  "language": "typescript",
+  "sourceRoot": "src",
+  "entryFile": "main",
+  "exec": "node",
+  "assets": [
+    "database/migrations/**/*"
+  ],
+  "watchAssets": true,
+  "compilerOptions": {
+    "deleteOutDir": true
+  }
+}

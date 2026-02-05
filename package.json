@@ -1,0 +1,49 @@
+{
+  "name": "shalkaarnext",
+  "version": "1.0.0",
+  "description": "SHALKAAR: Premium Balochi Fashion E-Commerce Platform",
+  "private": true,
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "dev:api": "turbo run dev --filter=@shalkaar/api",
+    "dev:storefront": "turbo run dev --filter=@shalkaar/storefront",
+    "dev:admin": "turbo run dev --filter=@shalkaar/admin",
+    "build": "turbo run build",
+    "build:api": "turbo run build --filter=@shalkaar/api",
+    "build:storefront": "turbo run build --filter=@shalkaar/storefront",
+    "build:admin": "turbo run build --filter=@shalkaar/admin",
+    "build:deps": "turbo run build --filter=./packages/*",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint -- --fix",
+    "type-check": "turbo run type-check",
+    "test": "turbo run test",
+    "test:watch": "turbo run test:watch",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "clean": "turbo run clean && rm -rf node_modules pnpm-lock.yaml",
+    "clean:cache": "turbo prune --scope=@shalkaar/* && rm -rf .turbo",
+    "db:migrate": "cd services/api && npm run typeorm migration:run",
+    "db:seed": "cd services/api && npm run ts-node src/database/seeds/index.ts",
+    "db:reset": "cd services/api && npm run typeorm migration:revert && npm run typeorm migration:run",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f"
+  },
+  "devDependencies": {
+    "@turbo/gen": "^1.12.0",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1",
+    "turbo": "^1.12.0",
+    "typescript": "^5.3.3"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "services/*"
+  ]
+}

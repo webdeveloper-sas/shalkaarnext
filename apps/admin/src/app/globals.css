@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-indigo: #2a1555;
+  --color-sienna: #a0522d;
+  --color-cream: #f5f3f0;
+  --color-dark: #1a1a1a;
+  --color-gold: #d4a574;
+}
+
+* {
+  @apply box-border;
+}
+
+html {
+  @apply scroll-smooth;
+}
+
+body {
+  @apply bg-gray-50 text-brand-dark font-sans antialiased;
+}
+
+.container-responsive {
+  @apply px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto;
+}
+
+button:focus-visible,
+a:focus-visible {
+  @apply outline-2 outline-offset-2 outline-brand-indigo;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  @apply outline-2 outline-offset-2 outline-brand-indigo;
+}

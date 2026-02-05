@@ -1,0 +1,84 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: shalkaar-postgres
+    environment:
+      POSTGRES_USER: shalkaar_dev
+      POSTGRES_PASSWORD: dev_password
+      POSTGRES_DB: shalkaar_dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - shalkaar-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U shalkaar_dev"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: shalkaar-api
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://shalkaar_dev:dev_password@postgres:5432/shalkaar_dev
+      DATABASE_LOGGING: "true"
+      JWT_SECRET: dev-secret-key-change-in-production
+      API_PORT: 3333
+      API_ENV: development
+    ports:
+      - "3333:3333"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - shalkaar-network
+    volumes:
+      - ./services/api:/app/services/api
+      - ./packages:/app/packages
+    command: npm run start:dev
+
+  # PgAdmin for database management (optional)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: shalkaar-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@shalkaar.local
+      PGADMIN_DEFAULT_PASSWORD: admin_password
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - shalkaar-network
+
+volumes:
+  postgres_data:
+
+networks:
+  shalkaar-network:
+    driver: bridge
+
+# Usage:
+# Start all services:
+#   docker-compose up -d
+#
+# Stop all services:
+#   docker-compose down
+#
+# View logs:
+#   docker-compose logs -f
+#
+# Rebuild containers:
+#   docker-compose build --no-cache
+#
+# Access points:
+#   - API: http://localhost:3333
+#   - Database: localhost:5432
+#   - PgAdmin: http://localhost:5050
