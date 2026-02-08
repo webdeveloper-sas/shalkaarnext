@@ -13,6 +13,7 @@ export const BRAND_COLORS = {
   deepTeal: '#2d5a5a',
   mediumGray: '#b0a8a0',
   lightGray: '#e8e4df',
+  softGold: '#d4af37',
 };
 
 // Typography constants
@@ -23,6 +24,10 @@ export const TYPOGRAPHY = {
   h4: { size: '18-20px', lineHeight: 1.4, weight: 500 },
   body: { size: '16px', lineHeight: 1.6, weight: 400 },
   caption: { size: '13-14px', lineHeight: 1.5, weight: 400 },
+  fontFamily: {
+    primary: '"Segoe UI", system-ui, sans-serif',
+    secondary: '"Georgia", serif',
+  },
 };
 
 // Spacing constants

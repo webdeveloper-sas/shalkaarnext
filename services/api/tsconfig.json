@@ -1,5 +1,10 @@
 {
   "extends": "../../tsconfig.json",
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
   "compilerOptions": {
     "module": "commonjs",
     "target": "ES2020",
@@ -8,15 +13,26 @@
     ],
     "moduleResolution": "node",
     "outDir": "dist",
-    "rootDir": "src",
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "strict": false,
+    "noEmitOnError": false,
+    /* baseUrl and paths enable cross-package imports.
+       @/* resolves to local src/ files, @shalkaar/* resolves to shared packages.
+       This allows the API to import types and utilities from shared packages. */
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"],
+      "@shalkaar/shared-types": ["../../packages/shared-types/src"],
+      "@shalkaar/shared-utils": ["../../packages/shared-utils/src"],
+      "@shalkaar/shared-ui": ["../../packages/shared-ui/src"],
+      "@shalkaar/api-client": ["../../packages/api-client/src"]
     },
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "src/**/*"

@@ -22,7 +22,17 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    /* Path aliases for cross-package imports (@shalkaar/* syntax)
+       This allows any app/package to import from shared packages without relative paths.
+       For example: import { Button } from '@shalkaar/shared-ui' works from any location. */
+    "baseUrl": ".",
+    "paths": {
+      "@shalkaar/shared-types": ["packages/shared-types/src/index.ts"],
+      "@shalkaar/shared-utils": ["packages/shared-utils/src/index.ts"],
+      "@shalkaar/shared-ui": ["packages/shared-ui/src/index.tsx"],
+      "@shalkaar/api-client": ["packages/api-client/src/index.ts"]
+    }
   },
   "include": [
     "**/*.ts",

@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import { BRAND_COLORS, TYPOGRAPHY } from "@shalkaar/shared-types";
+import { BRAND_COLORS, TYPOGRAPHY, SPACING } from "@shalkaar/shared-types";
 
 const config: Config = {
   content: [
@@ -34,11 +34,11 @@ const config: Config = {
         "4xl": ["36px", { lineHeight: "44px" }],
       },
       spacing: {
-        xs: TYPOGRAPHY.spacing.xs,
-        sm: TYPOGRAPHY.spacing.sm,
-        md: TYPOGRAPHY.spacing.md,
-        lg: TYPOGRAPHY.spacing.lg,
-        xl: TYPOGRAPHY.spacing.xl,
+        xs: SPACING.xs,
+        sm: SPACING.sm,
+        md: SPACING.md,
+        lg: SPACING.lg,
+        xl: SPACING.xl,
       },
       borderRadius: {
         sm: "4px",

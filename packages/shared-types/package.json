@@ -1,5 +1,5 @@
 {
-  "name": "@shalkaarnext/shared-types",
+  "name": "@shalkaar/shared-types",
   "version": "1.0.0",
   "description": "Shared TypeScript types and DTOs for SHALKAAR platform",
   "main": "dist/index.js",

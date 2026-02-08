@@ -1,4 +1,4 @@
-export default function ProductDetailPage({ params }: { params: { id: string } }) {
+export default function ProductDetailPage({ params: _params }: { params: { id: string } }) {
   return (
     <div>
       <div className="mb-8">

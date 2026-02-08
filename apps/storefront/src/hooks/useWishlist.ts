@@ -1,8 +1,8 @@
 import { useState, useCallback } from "react";
 
 interface UseWishlistOptions {
-  onAdd?: (id: string) => void;
-  onRemove?: (id: string) => void;
+  onAdd?: (_id: string) => void;
+  onRemove?: (_id: string) => void;
 }
 
 export function useWishlist(options?: UseWishlistOptions) {

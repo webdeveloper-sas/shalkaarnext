@@ -7,10 +7,10 @@ interface UserContextType {
   user: User | null;
   isLoading: boolean;
   isAuthenticated: boolean;
-  login: (email: string, password: string) => Promise<void>;
+  login: (_email: string, _password: string) => Promise<void>;
   logout: () => Promise<void>;
-  register: (email: string, password: string, name: string) => Promise<void>;
-  updateProfile: (data: Partial<User>) => Promise<void>;
+  register: (_email: string, _password: string, _name: string) => Promise<void>;
+  updateProfile: (_data: Partial<User>) => Promise<void>;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -18,17 +18,19 @@ const UserContext = createContext<UserContextType | undefined>(undefined);
 export function UserProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  void setUser;
 
   // TODO: Initialize user session from NextAuth session
   useEffect(() => {
     const initializeUser = async () => {
       // TODO: Check for active session via NextAuth
+      void setUser;
       setIsLoading(false);
     };
     initializeUser();
   }, []);
 
-  const login = async (email: string, password: string) => {
+  const login = async (_email: string, _password: string) => {
     // TODO: Call API login endpoint
   };
 
@@ -36,11 +38,11 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     // TODO: Clear session and user state
   };
 
-  const register = async (email: string, password: string, name: string) => {
+  const register = async (_email: string, _password: string, _name: string) => {
     // TODO: Call API register endpoint
   };
 
-  const updateProfile = async (data: Partial<User>) => {
+  const updateProfile = async (_data: Partial<User>) => {
     // TODO: Call API update profile endpoint
   };
 

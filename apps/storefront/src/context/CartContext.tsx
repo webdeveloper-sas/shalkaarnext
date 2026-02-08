@@ -6,9 +6,9 @@ import type { Cart, CartItem, Product } from "@shalkaar/shared-types";
 interface CartContextType {
   cart: Cart | null;
   items: CartItem[];
-  addToCart: (product: Product, quantity: number) => Promise<void>;
-  removeFromCart: (itemId: string) => Promise<void>;
-  updateQuantity: (itemId: string, quantity: number) => Promise<void>;
+  addToCart: (_product: Product, _quantity: number) => Promise<void>;
+  removeFromCart: (_itemId: string) => Promise<void>;
+  updateQuantity: (_itemId: string, _quantity: number) => Promise<void>;
   clearCart: () => Promise<void>;
   totalItems: number;
   totalPrice: number;
@@ -19,24 +19,28 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [cart, setCart] = useState<Cart | null>(null);
   const [items, setItems] = useState<CartItem[]>([]);
+  void setCart;
+  void setItems;
 
   // TODO: Initialize cart from localStorage or API
   useEffect(() => {
     const initializeCart = async () => {
       // TODO: Fetch cart from API or localStorage
+      void setCart;
+      void setItems;
     };
     initializeCart();
   }, []);
 
-  const addToCart = async (product: Product, quantity: number) => {
+  const addToCart = async (_product: Product, _quantity: number) => {
     // TODO: Add item to cart via API
   };
 
-  const removeFromCart = async (itemId: string) => {
+  const removeFromCart = async (_itemId: string) => {
     // TODO: Remove item from cart via API
   };
 
-  const updateQuantity = async (itemId: string, quantity: number) => {
+  const updateQuantity = async (_itemId: string, _quantity: number) => {
     // TODO: Update item quantity via API
   };
 

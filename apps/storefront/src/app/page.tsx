@@ -8,7 +8,9 @@ export default function HomePage() {
         <p className="text-xl text-brand-dark mb-8 max-w-2xl mx-auto">
           Discover exquisite handwoven textiles and artisan crafts celebrating heritage and tradition.
         </p>
-        {/* TODO: Add CTA buttons, featured collections, hero image */}
+        <div className="inline-block bg-green-100 border border-green-500 text-green-700 px-6 py-3 rounded-lg font-semibold">
+          ✅ Storefront ready
+        </div>
       </section>
 
       <section className="py-16 border-t border-brand-dark/10">

@@ -1,4 +1,4 @@
-export default function ProductDetailPage({ params }: { params: { slug: string } }) {
+export default function ProductDetailPage({ params: _params }: { params: { slug: string } }) {
   return (
     <div className="container-responsive py-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

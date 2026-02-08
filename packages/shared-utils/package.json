@@ -1,5 +1,5 @@
 {
-  "name": "@shalkaarnext/shared-utils",
+  "name": "@shalkaar/shared-utils",
   "version": "1.0.0",
   "description": "Shared utility functions for SHALKAAR platform",
   "main": "dist/index.js",

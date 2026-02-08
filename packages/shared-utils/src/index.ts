@@ -39,7 +39,7 @@ export function isValidEmail(email: string): boolean {
 }
 
 export function isValidPhone(phone: string): boolean {
-  const regex = /^[\d\s\-\+\(\)]{10,}$/;
+  const regex = /^[\d\s\-+()]{10,}$/;
   return regex.test(phone);
 }
 

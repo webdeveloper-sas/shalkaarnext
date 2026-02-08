@@ -1,0 +1,188 @@
+// Prisma schema for SHALKAAR e-commerce platform
+// Phase 5: Database layer with core entities
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User model - Core user entity
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String?  // Hashed password for authentication
+  firstName String?
+  lastName  String?
+  phone     String?
+  role      String   @default("CUSTOMER") // CUSTOMER, VENDOR, ADMIN
+  
+  // Relations
+  orders    Order[]
+  cart      Cart?
+  addresses Address[]
+  
+  // Metadata
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@index([email])
+}
+
+// Product model - Core product entity
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  basePrice   Decimal  @db.Decimal(10, 2)
+  stock       Int      @default(100) // Available inventory
+  
+  // Relations
+  categoryId  String?
+  category    Category? @relation(fields: [categoryId], references: [id])
+  
+  cartItems   CartItem[]
+  orderItems  OrderItem[]
+  
+  // Metadata
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([categoryId])
+  @@index([name])
+}
+
+// Category model - Product categories
+model Category {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  
+  // Relations
+  products  Product[]
+  
+  // Metadata
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Order model - Customer orders
+model Order {
+  id             String   @id @default(cuid())
+  orderNumber    String   @unique
+  
+  // Relations
+  userId         String
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  items          OrderItem[]
+  shippingAddress Address?
+  
+  // Order details
+  status         String   @default("PENDING") // PENDING, PROCESSING, SHIPPED, DELIVERED, CANCELLED
+  paymentStatus  String   @default("PENDING") // PENDING, COMPLETED, FAILED
+  transactionId  String?  // Payment gateway transaction ID
+  
+  subtotal       Decimal  @default(0) @db.Decimal(10, 2)
+  tax            Decimal  @default(0) @db.Decimal(10, 2)
+  shippingCost   Decimal  @default(0) @db.Decimal(10, 2)
+  discount       Decimal  @default(0) @db.Decimal(10, 2)
+  total          Decimal  @default(0) @db.Decimal(10, 2)
+  
+  customerEmail  String?
+  customerPhone  String?
+  
+  // Metadata
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  
+  @@index([userId])
+  @@index([orderNumber])
+  @@index([status])
+}
+
+// OrderItem model - Individual items in an order
+model OrderItem {
+  id        String   @id @default(cuid())
+  
+  // Relations
+  orderId   String
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+  
+  // Item details
+  quantity  Int      @default(1)
+  price     Decimal  @db.Decimal(10, 2)
+  
+  // Metadata
+  createdAt DateTime @default(now())
+  
+  @@index([orderId])
+  @@index([productId])
+}
+
+// Cart model - Shopping cart per user
+model Cart {
+  id        String   @id @default(cuid())
+  
+  // Relations
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  items     CartItem[]
+  
+  // Metadata
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// CartItem model - Individual items in a cart
+model CartItem {
+  id        String   @id @default(cuid())
+  
+  // Relations
+  cartId    String
+  cart      Cart     @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+  
+  // Item details
+  quantity  Int      @default(1)
+  
+  // Metadata
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@index([cartId])
+  @@index([productId])
+}
+
+// Address model - Shipping and billing addresses
+model Address {
+  id        String   @id @default(cuid())
+  
+  // Relations
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  orderId   String?  @unique
+  order     Order?   @relation(fields: [orderId], references: [id], onDelete: SetNull)
+  
+  // Address details
+  street    String
+  city      String
+  state     String
+  postal    String
+  country   String
+  
+  // Metadata
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@index([userId])
+}

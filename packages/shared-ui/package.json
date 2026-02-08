@@ -1,5 +1,5 @@
 {
-  "name": "@shalkaarnext/shared-ui",
+  "name": "@shalkaar/shared-ui",
   "version": "1.0.0",
   "description": "Shared UI components for SHALKAAR platform",
   "main": "dist/index.js",

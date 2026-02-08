@@ -12,10 +12,10 @@
     "clean": "rm -rf .next dist"
   },
   "dependencies": {
-    "@shalkaarnext/api-client": "workspace:*",
-    "@shalkaarnext/shared-types": "workspace:*",
-    "@shalkaarnext/shared-ui": "workspace:*",
-    "@shalkaarnext/shared-utils": "workspace:*",
+    "@shalkaar/api-client": "workspace:*",
+    "@shalkaar/shared-types": "workspace:*",
+    "@shalkaar/shared-ui": "workspace:*",
+    "@shalkaar/shared-utils": "workspace:*",
     "next": "^14.0.0",
     "next-auth": "^4.24.0",
     "react": "^18.2.0",

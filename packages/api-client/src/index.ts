@@ -1,4 +1,4 @@
-import { ApiResponse, PaginatedResponse } from '@shalkaarnext/shared-types';
+import { ApiResponse } from '@shalkaar/shared-types';
 
 export class ApiClient {
   private baseUrl: string;

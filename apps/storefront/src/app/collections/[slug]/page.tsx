@@ -1,4 +1,4 @@
-export default function CollectionDetailPage({ params }: { params: { slug: string } }) {
+export default function CollectionDetailPage({ params: _params }: { params: { slug: string } }) {
   return (
     <div className="container-responsive py-12">
       <h1 className="text-4xl font-serif font-bold text-brand-indigo mb-8">

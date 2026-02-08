@@ -1,5 +1,5 @@
 {
-  "name": "@shalkaarnext/api-client",
+  "name": "@shalkaar/api-client",
   "version": "1.0.0",
   "description": "Typed API client for SHALKAAR platform",
   "main": "dist/index.js",
@@ -11,8 +11,8 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@shalkaarnext/shared-types": "workspace:*",
-    "@shalkaarnext/shared-utils": "workspace:*"
+    "@shalkaar/shared-types": "workspace:*",
+    "@shalkaar/shared-utils": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",

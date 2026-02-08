@@ -1,4 +1,5 @@
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
+// redirect function needed for future authentication checks
 
 export default function AccountPage() {
   // TODO: Check if user is authenticated, redirect to auth if not

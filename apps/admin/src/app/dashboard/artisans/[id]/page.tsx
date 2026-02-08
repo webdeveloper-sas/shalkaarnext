@@ -1,4 +1,4 @@
-export default function ArtisanDetailPage({ params }: { params: { id: string } }) {
+export default function ArtisanDetailPage({ params: _params }: { params: { id: string } }) {
   return (
     <div>
       <div className="mb-8">

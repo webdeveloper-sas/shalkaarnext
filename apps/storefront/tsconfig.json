@@ -9,21 +9,42 @@
     ],
     "jsx": "preserve",
     "incremental": true,
+    /* baseUrl and paths are inherited from root tsconfig.json which includes @shalkaar/* aliases.
+       This local paths config adds the @/* alias for local imports within this app. */
+    "baseUrl": ".",
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "@shalkaar/shared-types": [
+        "../../packages/shared-types/src/index.ts"
+      ],
+      "@shalkaar/shared-utils": [
+        "../../packages/shared-utils/src/index.ts"
+      ],
+      "@shalkaar/shared-ui": [
+        "../../packages/shared-ui/src/index.tsx"
+      ],
+      "@shalkaar/api-client": [
+        "../../packages/api-client/src/index.ts"
       ]
     },
     "skipLibCheck": true,
     "isolatedModules": true,
     "allowJs": true,
     "noEmit": true,
-    "moduleResolution": "bundler"
+    "moduleResolution": "bundler",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
