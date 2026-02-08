@@ -1,51 +1,120 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
-import type { Cart, CartItem, Product } from "@shalkaar/shared-types";
+import type { Product } from "@/lib/api";
+
+interface LocalCartItem {
+  id: string;
+  productId: string;
+  name: string;
+  price: number;
+  quantity: number;
+  image?: string;
+}
 
 interface CartContextType {
-  cart: Cart | null;
-  items: CartItem[];
-  addToCart: (_product: Product, _quantity: number) => Promise<void>;
-  removeFromCart: (_itemId: string) => Promise<void>;
-  updateQuantity: (_itemId: string, _quantity: number) => Promise<void>;
+  items: LocalCartItem[];
+  addToCart: (product: Product, quantity: number) => Promise<void>;
+  removeFromCart: (productId: string) => Promise<void>;
+  updateQuantity: (productId: string, quantity: number) => Promise<void>;
   clearCart: () => Promise<void>;
   totalItems: number;
   totalPrice: number;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
+const STORAGE_KEY = "shalkaar_cart";
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [cart, setCart] = useState<Cart | null>(null);
-  const [items, setItems] = useState<CartItem[]>([]);
-  void setCart;
-  void setItems;
+  const [items, setItems] = useState<LocalCartItem[]>([]);
+  const [isHydrated, setIsHydrated] = useState(false);
 
-  // TODO: Initialize cart from localStorage or API
+  // Initialize from localStorage
   useEffect(() => {
-    const initializeCart = async () => {
-      // TODO: Fetch cart from API or localStorage
-      void setCart;
-      void setItems;
-    };
-    initializeCart();
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        setItems(JSON.parse(saved));
+      }
+    } catch (error) {
+      console.error("Failed to load cart from storage:", error);
+    }
+    setIsHydrated(true);
   }, []);
 
-  const addToCart = async (_product: Product, _quantity: number) => {
-    // TODO: Add item to cart via API
+  // Persist to localStorage
+  useEffect(() => {
+    if (isHydrated) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+      } catch (error) {
+        console.error("Failed to save cart to storage:", error);
+      }
+    }
+  }, [items, isHydrated]);
+
+  const addToCart = async (product: Product, quantity: number) => {
+    if (quantity <= 0) {
+      throw new Error("Quantity must be greater than 0");
+    }
+
+    if (!product.stock || product.stock < quantity) {
+      throw new Error(
+        `Only ${product.stock || 0} item${product.stock !== 1 ? "s" : ""} available`
+      );
+    }
+
+    setItems((prevItems) => {
+      const existingItem = prevItems.find((item) => item.productId === product.id);
+
+      if (existingItem) {
+        const newQuantity = existingItem.quantity + quantity;
+        if (newQuantity > (product.stock || 0)) {
+          throw new Error(
+            `Cannot exceed available stock of ${product.stock || 0}`
+          );
+        }
+        return prevItems.map((item) =>
+          item.productId === product.id
+            ? { ...item, quantity: newQuantity }
+            : item
+        );
+      }
+
+      const newItem: LocalCartItem = {
+        id: `${product.id}-${Date.now()}`,
+        productId: product.id,
+        name: product.name,
+        price: product.basePrice || 0,
+        quantity,
+        image: undefined, // Will add real images in Phase 9d
+      };
+
+      return [...prevItems, newItem];
+    });
   };
 
-  const removeFromCart = async (_itemId: string) => {
-    // TODO: Remove item from cart via API
+  const removeFromCart = async (productId: string) => {
+    setItems((prevItems) =>
+      prevItems.filter((item) => item.productId !== productId)
+    );
   };
 
-  const updateQuantity = async (_itemId: string, _quantity: number) => {
-    // TODO: Update item quantity via API
+  const updateQuantity = async (productId: string, quantity: number) => {
+    if (quantity <= 0) {
+      await removeFromCart(productId);
+      return;
+    }
+
+    setItems((prevItems) =>
+      prevItems.map((item) =>
+        item.productId === productId ? { ...item, quantity } : item
+      )
+    );
   };
 
   const clearCart = async () => {
-    // TODO: Clear cart via API
+    setItems([]);
   };
 
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
@@ -54,7 +123,6 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   return (
     <CartContext.Provider
       value={{
-        cart,
         items,
         addToCart,
         removeFromCart,
