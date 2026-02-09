@@ -2,33 +2,28 @@
 
 import { useState, useEffect } from 'react';
 import ProductCard from '@/components/ProductCard';
+import SearchAndFilter from '@/components/SearchAndFilter';
 import { fetchProducts, Product } from '@/lib/api';
 
 export default function ProductsPage() {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [sortBy, setSortBy] = useState<'newest' | 'price-low' | 'price-high'>('newest');
+  const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {
     const loadProducts = async () => {
       try {
         setIsLoading(true);
-        const { products: fetchedProducts } = await fetchProducts(0, 100);
-        
-        // Sort products based on selected option
-        let sortedProducts = [...fetchedProducts];
-        if (sortBy === 'price-low') {
-          sortedProducts.sort((a, b) => a.basePrice - b.basePrice);
-        } else if (sortBy === 'price-high') {
-          sortedProducts.sort((a, b) => b.basePrice - a.basePrice);
-        } else if (sortBy === 'newest') {
-          sortedProducts.sort((a, b) => 
-            new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime()
-          );
-        }
-        
-        setProducts(sortedProducts);
+        const { products: fetchedProducts } = await fetchProducts(0, 1000);
+        setAllProducts(fetchedProducts);
+        setFilteredProducts(fetchedProducts);
+
+        // Extract unique categories
+        const uniqueCategories = [...new Set(fetchedProducts.map((p) => p.categoryId))].filter(Boolean) as string[];
+        setCategories(uniqueCategories);
+
         setError(null);
       } catch (err) {
         setError('Failed to load products');
@@ -39,7 +34,7 @@ export default function ProductsPage() {
     };
 
     loadProducts();
-  }, [sortBy]);
+  }, []);
 
   return (
     <main className="min-h-screen bg-white">
@@ -57,31 +52,14 @@ export default function ProductsPage() {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Filter and Sort Section */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 pb-8 border-b border-gray-200">
-          <div>
-            <p className="text-gray-600 font-medium">
-              {isLoading ? 'Loading...' : `${products.length} products`}
-            </p>
-          </div>
-
-          {/* Sort Dropdown */}
-          <div className="mt-4 sm:mt-0">
-            <label htmlFor="sort" className="inline-block mr-3 text-gray-700 font-medium">
-              Sort by:
-            </label>
-            <select
-              id="sort"
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as 'newest' | 'price-low' | 'price-high')}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-            >
-              <option value="newest">Newest</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
-            </select>
-          </div>
-        </div>
+        {/* Search and Filter Component */}
+        {!isLoading && (
+          <SearchAndFilter
+            products={allProducts}
+            onFilter={setFilteredProducts}
+            categories={categories}
+          />
+        )}
 
         {/* Products Grid */}
         {isLoading ? (
@@ -96,16 +74,16 @@ export default function ProductsPage() {
           <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
             <p className="text-red-800 font-medium">{error}</p>
           </div>
-        ) : products.length === 0 ? (
+        ) : filteredProducts.length === 0 ? (
           <div className="text-center py-12">
             <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
             </svg>
-            <p className="text-gray-600 text-lg">No products available at the moment.</p>
+            <p className="text-gray-600 text-lg">No products match your search criteria.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
-            {products.map((product) => (
+            {filteredProducts.map((product) => (
               <ProductCard
                 key={product.id}
                 id={product.id}
@@ -120,7 +98,7 @@ export default function ProductsPage() {
       </div>
 
       {/* CTA Section */}
-      {products.length > 0 && (
+      {filteredProducts.length > 0 && (
         <section className="bg-gray-50 py-12 md:py-16 mt-12">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">

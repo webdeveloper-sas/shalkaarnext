@@ -1,11 +1,13 @@
+
 # TypeScript Path Resolution - Quick Reference
 
 ## Problem Fixed ✅
 
-```
-"Non-relative paths are not allowed when 'baseUrl' is not set. 
+``` text
+"Non-relative paths are not allowed when 'baseUrl' is not set.
 Did you forget a leading './'?"
-```
+
+``` text
 
 This error is now gone! All cross-package imports work perfectly.
 
@@ -14,7 +16,8 @@ This error is now gone! All cross-package imports work perfectly.
 ## Clean Import Syntax
 
 ### From Any App or Service
-```typescript
+
+``` typescript
 // ✅ All of these work now:
 import { Button, Input, Card } from '@shalkaar/shared-ui'
 import { Product, Order, User } from '@shalkaar/shared-types'
@@ -24,17 +27,21 @@ import { apiClient } from '@shalkaar/api-client'
 // Local imports
 import { useCart } from '@/hooks/useCart'
 import { CartProvider } from '@/context/CartContext'
-```
+
+``` text
 
 ---
 
 ## What Changed
 
 | File | Added | Purpose |
-|------|-------|---------|
+
+| ------ | ------- | --------- |
 | `/tsconfig.json` | `baseUrl` + `paths` | Enable @shalkaar/* aliases for all packages |
+
 | `/apps/storefront/tsconfig.json` | `baseUrl` + `paths` | Resolve @/* locally, @shalkaar/* to packages |
 | `/apps/admin/tsconfig.json` | `baseUrl` + `paths` | Same as storefront |
+
 | `/services/api/tsconfig.json` | `baseUrl` + `paths` | Same pattern for NestJS |
 
 ---
@@ -42,7 +49,8 @@ import { CartProvider } from '@/context/CartContext'
 ## Import Examples by Location
 
 ### In Storefront (`apps/storefront/`)
-```typescript
+
+``` typescript
 // Shared packages
 import { Button } from '@shalkaar/shared-ui'
 import { Product } from '@shalkaar/shared-types'
@@ -51,10 +59,12 @@ import { Product } from '@shalkaar/shared-types'
 import { useCart } from '@/hooks/useCart'
 import { CartContext } from '@/context/CartContext'
 import { formatPrice } from '@/utils/formatters'
-```
+
+``` text
 
 ### In Admin CMS (`apps/admin/`)
-```typescript
+
+``` typescript
 // Shared packages
 import { Input, Badge } from '@shalkaar/shared-ui'
 import { UserRole, OrderStatus } from '@shalkaar/shared-types'
@@ -62,10 +72,12 @@ import { UserRole, OrderStatus } from '@shalkaar/shared-types'
 // Local
 import { useAdmin } from '@/context/AdminContext'
 import { AdminLayout } from '@/components/AdminLayout'
-```
+
+``` text
 
 ### In API (`services/api/`)
-```typescript
+
+``` typescript
 // Shared packages
 import { User, Product } from '@shalkaar/shared-types'
 import { formatPrice } from '@shalkaar/shared-utils'
@@ -74,7 +86,8 @@ import { CreateProductDTO } from '@shalkaar/shared-types'
 // Local
 import { ProductsService } from '@/modules/products/products.service'
 import { AuthGuard } from '@/guards/auth.guard'
-```
+
+``` text
 
 ---
 
@@ -83,7 +96,8 @@ import { AuthGuard } from '@/guards/auth.guard'
 ### The Three-Layer System
 
 **Layer 1: Root Config** (`/tsconfig.json`)
-```json
+
+``` json
 {
   "baseUrl": ".",
   "paths": {
@@ -93,10 +107,12 @@ import { AuthGuard } from '@/guards/auth.guard'
     "@shalkaar/api-client": ["packages/api-client/src/index.ts"]
   }
 }
-```
+
+``` text
 
 **Layer 2: App Extends Root**
-```json
+
+``` json
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
@@ -108,10 +124,12 @@ import { AuthGuard } from '@/guards/auth.guard'
     }
   }
 }
-```
+
+``` text
 
 **Layer 3: TypeScript Resolves**
-```
+
+``` text
 When you import: import { Button } from '@shalkaar/shared-ui'
 
 TypeScript:
@@ -120,41 +138,57 @@ TypeScript:
 3. Finds: "../../packages/shared-ui/src/index.tsx"
 4. Resolves to correct location
 5. Loads the module ✓
-```
+
+``` text
 
 ---
 
 ## Verification Steps
 
 ### 1. In VS Code
+
 - Open any file
+
 - Type: `import { ` and VS Code should suggest cross-package imports
+
 - No red squiggles on `@shalkaar/` imports
+
 - Ctrl+Click navigates to the correct file
 
 ### 2. Command Line
-```bash
+
+``` bash
+
 # All should complete without "baseUrl" errors
+
 pnpm type-check
 pnpm build
-```
+
+``` text
 
 ### 3. Watch for Errors
+
 The following errors should NO LONGER appear:
-```
+
+``` text
 ❌ Non-relative paths are not allowed
 ❌ Cannot find module '@shalkaar/shared-ui'
 ❌ baseUrl is not set
-```
+
+``` text
 
 ---
 
 ## Key Points
 
 ✅ **baseUrl** - Required for TypeScript to use path mappings
+
 ✅ **paths** - Maps aliases to actual file locations
+
 ✅ **Relative paths** - Each app config uses relative paths to packages
+
 ✅ **Inheritance** - Apps inherit root config settings
+
 ✅ **Consistent syntax** - Same imports work from anywhere
 
 ---
@@ -162,32 +196,41 @@ The following errors should NO LONGER appear:
 ## Troubleshooting
 
 ### Still seeing errors in VS Code?
-```
+
+``` text
 1. Close VS Code completely
 2. Open the folder again
 3. Or: Ctrl+Shift+P → Reload Window
-```
+
+``` text
 
 ### TypeScript still complaining?
-```bash
+
+``` bash
+
 # Rebuild TypeScript
+
 pnpm clean:cache
 pnpm type-check
-```
+
+``` text
 
 ### Import not resolving?
+
 Check the path in your `tsconfig.json`:
-```json
+
+``` json
 // If you're in /apps/storefront/src/pages/
 // And want to import from /packages/shared-ui/src/
 // The path should be: ../../packages/shared-ui/src/index.tsx
-```
+
+``` text
 
 ---
 
 ## File Locations Reference
 
-```
+``` text
 Project Root
 ├── packages/
 │   ├── shared-types/src/        → @shalkaar/shared-types
@@ -203,34 +246,47 @@ Project Root
 │   └── api/src/                 → @/* (local imports)
 │
 └── tsconfig.json                → Defines all @shalkaar/* aliases
-```
+
+``` text
 
 ---
 
 ## Before vs After
 
 ### ❌ BEFORE (With Relative Paths)
-```typescript
+
+``` typescript
 import { Button } from '../../../packages/shared-ui/src'
 import { useCart } from '../../../../apps/storefront/src/hooks/useCart'
 import { Product } from '../../../../../packages/shared-types/src'
-```
+
+``` text
 Problems:
+
 - Hard to count dots
+
 - Breaks when moving files
+
 - Ugly and hard to read
+
 - IDE autocomplete struggles
 
 ### ✅ AFTER (With Path Aliases)
-```typescript
+
+``` typescript
 import { Button } from '@shalkaar/shared-ui'
 import { useCart } from '@/hooks/useCart'
 import { Product } from '@shalkaar/shared-types'
-```
+
+``` text
 Benefits:
+
 - Clear and consistent
+
 - Doesn't break when moving files
+
 - Self-documenting
+
 - Perfect IDE autocomplete
 
 ---

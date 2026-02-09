@@ -1,6 +1,7 @@
+
 # SHALKAAR: Brand & Design Foundation
 
-**A Premium Balochi Fashion E-Commerce Platform**  
+**A Premium Balochi Fashion E-Commerce Platform**
 *Heritage Meets Modern Excellence*
 
 ---
@@ -8,19 +9,29 @@
 ## 1. BRAND POSITIONING
 
 ### Brand Personality
-**Shalkaar** is positioned as the **authoritative keeper of authentic Balochi heritage**, not a trend-chasing fast-fashion retailer. 
+
+**Shalkaar** is positioned as the **authoritative keeper of authentic Balochi heritage**, not a trend-chasing fast-fashion retailer.
 
 **Core Personality Traits:**
+
 - **Custodian, not curator** — We preserve and present Balochi culture; we don't reinterpret or modernize it beyond recognition
+
 - **Scholarly elegance** — Knowledge-driven, articulate, confident in our heritage without over-explanation
+
 - **Timeless, not trendy** — Products are seasonal only by artisanal production cycles, not fashion seasons
+
 - **Proudly regional** — Unapologetic about being Balochi-first; this is our strength, not our limitation
+
 - **Refined craftsmanship** — Every product is presented as art; every design detail has heritage roots
 
 **Voice:**
+
 - Confident without arrogance
+
 - Educational without condescension
+
 - Celebratory of heritage without nostalgia-trapping
+
 - Poetic in language, precise in product details
 
 ### Target Audience
@@ -51,10 +62,15 @@
    - Values: impact, traditional correctness, craftsmanship visibility
 
 ### Emotional Tone
+
 - **Pride** — In heritage, in craftsmanship, in choosing authenticity
+
 - **Reverence** — For the artists and traditions behind each piece
+
 - **Sophistication** — Earned through understanding, not assumed
+
 - **Aspiration** — Not for unattainable trends, but for meaningful cultural belonging
+
 - **Patience** — Implicit acceptance that true craft takes time
 
 ---
@@ -64,54 +80,81 @@
 ### Color Palette: Earth & Heritage
 
 **Primary Colors** (Foundation)
+
 - **Deep Indigo (#1a2847)** — Symbol of Balochi textiles, depth, tradition. Use for primary CTA, headers, key navigation
+
 - **Burnt Sienna (#8b4513)** — Balochi embroidery staple, warmth, handcrafted feel. Use for accents, borders, secondary buttons
+
 - **Off-White/Cream (#f5f1ed)** — Luxury whitespace, reduces strain on handwoven/embroidered product photography. Primary background
+
 - **Charcoal Black (#2a2a2a)** — Authority, text, structure. NOT pure black; maintains warmth
 
 **Secondary Colors** (Heritage Accent)
+
 - **Deep Red/Maroon (#8b1a1a)** — Traditional Balochi red, reserved for hero sections, limited-edition badges, or seasonal emphasis
+
 - **Warm Sand (#d4b9a0)** — Balochi textiles natural yarn, use for borders, dividers, lighter accents
+
 - **Deep Teal (#2d5a5a)** — Secondary embroidery tradition, use sparingly for complementary CTAs or premium tier indicators
 
 **Neutral Support**
+
 - **Medium Gray (#b0a8a0)** — Secondary text, meta information, non-critical UI
+
 - **Light Gray (#e8e4df)** — Subtle backgrounds, borders, dividers
 
 ### Color Application Rules
 
 | Element | Color | Reasoning |
-|---------|-------|-----------|
+
+| --------- | ------- | ----------- |
+
 | Primary CTA (Buy, Add to Cart) | Deep Indigo | High authority, trust, clear intention |
+
 | Hover/Active States | Burnt Sienna | Warmth, craft feeling, gentle intensity |
 | Premium/Rare Badges | Deep Red + Gold accent | Heritage prestige, limited availability |
+
 | Text Body | Charcoal Black | Readability, warmth, sophistication |
 | Secondary CTAs | Burnt Sienna | Lower priority but still heritage-grounded |
+
 | Prices/Meta Info | Medium Gray | De-emphasize commercial aspect, focus on product |
 | Dividers/Borders | Warm Sand | Organic feel, respects visual whitespace |
+
 | Hero Backgrounds | Off-White/Cream | Maximum focus on product photography |
 | Loading States/Transitions | Burnt Sienna | Feels intentional, not generic |
+
 | Error/Alert | Deep Red | Tradition-grounded warning, not alarming |
 
 ### Contrast & Luxury Rules
 
 **Light Combinations:**
+
 - Off-White background + Charcoal text = 12.5:1 contrast (WCAG AAA, excellent readability)
+
 - Off-White background + Deep Indigo CTAs = 9.8:1 contrast (clear, premium)
 
 **Dark Combinations:**
+
 - Deep Indigo background + Off-White text = Reserved for hero sections, premium testimonials, brand moments
+
 - Never use pure white on pure black (too harsh); use Off-White on Charcoal for warmth
 
 **Saturation Principle:**
+
 - Colors are *rich but not loud*
+
 - Balochi textiles are naturally saturated yet muted; match this
+
 - Avoid neon, pastel, or oversaturated versions
+
 - Every color should feel like it came from a textile dyehouse
 
 **Accent Color Discipline:**
+
 - Deep Red used only 2-3 times per page maximum
+
 - Acts as visual punctuation, not wallpaper
+
 - When Deep Red appears, surround it with Off-White (breathing room)
 
 ---
@@ -121,50 +164,74 @@
 ### Font Strategy: "Heritage Meets Modernity"
 
 **Primary Display Font: "Lora" (Serif) or equivalent**
+
 - *Why Serif?* Serifs convey heritage, editorial prestige, handcrafted quality
+
 - Used for: H1 headings, brand lockup, hero statements, product category titles
+
 - Style: Regular weight for elegance, Bold only for key moments (never Extra-Bold)
+
 - Line height: 1.3 (tighter, sophisticated)
+
 - Letter spacing: Natural (no artificial expansion)
 
 *Alternative: "Cormorant Garamond"* if Lora feels too digital — provides more classical prestige
 
 **Secondary Display Font: "Inter" or "Poppins" (Modern Sans-Serif)**
+
 - *Why Sans-Serif?* Balances tradition with accessibility, modern usage
+
 - Used for: H2/H3 subheadings, navigation, UI elements, body text
+
 - Style: Regular for body, Medium for secondary headings, SemiBold for emphasis
+
 - Line height: 1.5 (breathing room, modern)
+
 - Letter spacing: +0.3px for body text (luxury, not cramped)
 
 ### Typographic Hierarchy & Rules
 
 | Element | Font | Weight | Size | Line Height | Letter Spacing | Color |
-|---------|------|--------|------|-------------|-----------------|-------|
+
+| --------- | ------ | -------- | ------ | ------------- | ----------------- | ------- |
+
 | **H1** (Hero Statement) | Lora | Regular | 48-56px | 1.3 | 0 | Deep Indigo |
+
 | **H2** (Section Title) | Lora | Regular | 36-40px | 1.3 | 0 | Deep Indigo |
 | **H3** (Subsection) | Inter | SemiBold | 24-28px | 1.4 | 0 | Charcoal |
+
 | **H4** (Minor Heading) | Inter | Medium | 18-20px | 1.4 | 0 | Charcoal |
 | **Body Text** | Inter | Regular | 16px | 1.6 | +0.3px | Charcoal |
+
 | **Caption** (Material, Origin) | Inter | Regular | 13-14px | 1.5 | +0.2px | Medium Gray |
 | **Price/Meta** | Inter | Regular | 14px | 1.5 | 0 | Medium Gray |
+
 | **Buttons/CTA** | Inter | Medium | 15-16px | 1.5 | +0.5px | Off-White on Indigo |
 | **Product Tags** (Hand-embroidered, Rare) | Inter | SemiBold | 12px | 1.4 | +0.3px | Deep Indigo |
 
 ### Urdu/Regional Script Support
 
 **Critical for Authenticity:**
+
 - Display product names in *both* English and Urdu
+
 - Use Urdu for heritage context, embroidery technique names, region of origin
+
 - Font: "Noto Naskh Arabic" or "Urdu Typesetting" (system font)
+
 - Urdu text should be equal visual weight to English — not smaller, not secondary
+
 - Line height for Urdu: 1.8 (diacriticals require space)
+
 - Placement: English above, Urdu directly below (or side-by-side if space allows)
 
 **Example:**
-```
+
+``` text
 Balochi Ajrak Shawl
 بلوچی اجڑک شال
 Hand-woven, 100% organic cotton, Gwadar origin
+
 ```
 
 ### Typography Principles
@@ -186,29 +253,45 @@ Hand-woven, 100% organic cotton, Gwadar origin
 Whitespace is **not empty space**; it is **intentional silence** that lets products and heritage speak.
 
 **Rules:**
+
 - Minimum 40px margin between sections (mobile: 24px)
+
 - Minimum 24px padding inside cards and containers
+
 - Never fill vertical space just because it exists
+
 - A page with 30% whitespace = premium; 10% whitespace = fast-fashion
+
 - Use whitespace to create visual hierarchy more than color or size
 
 ### Grid System: Modular & Respectful
 
 **Desktop Grid:**
+
 - 12-column grid (standard, proven)
+
 - Gutter: 24px between columns
+
 - Container width: 1200px (respects readability and product imagery)
+
 - Section padding: 80px vertical (luxury pacing)
 
 **Tablet Grid:**
+
 - 8-column grid
+
 - Gutter: 16px
+
 - Full-width sections with 32px side padding
 
 **Mobile Grid:**
+
 - 4-column grid
+
 - Gutter: 12px
+
 - Full-width with 16px side padding
+
 - Stack-based layout (no complex grids)
 
 ### Homepage Layout Philosophy: "Editorial, Not Marketplace"
@@ -265,7 +348,8 @@ The homepage is a **cultural storytelling platform**, not a product listing ware
 ### Product Listing Aesthetics: "Image-First, Minimal Text"
 
 **Product Card Structure:**
-```
+
+``` text
 [HIGH-QUALITY IMAGE — 70% of card space]
 [Collection tag: "Ajrak" or "Hand-Embroidered" — Burnt Sienna badge]
 [Product name in Lora serif — 18px, Deep Indigo]
@@ -273,41 +357,65 @@ The homepage is a **cultural storytelling platform**, not a product listing ware
 [Price in Medium Gray — smallest element]
 [One-line detail: "Hand-woven, Organic Cotton" — 13px, Medium Gray]
 [Hover: "View Details" CTA slides in — Deep Indigo button]
-```
+
+``` text
 
 **Rules:**
+
 - Images occupy 60-70% of vertical space
+
 - Text occupies 30-40%
+
 - Never show 10 products per row (shows indifference to quality)
+
 - Desktop: 3 columns, Tablet: 2 columns, Mobile: 1 column
+
 - Card height: 1:1 image ratio (square) — luxurious, not cramped
+
 - Spacing between cards: 24px (breathes)
+
 - No star ratings, no review counts (we build trust through storytelling, not crowds)
+
 - **Filters on left sidebar** (desktop), collapsible (mobile) — organized but not overwhelming
 
 ### Product Detail Page Layout
 
 **Image Section (Left, 55% width on desktop):**
+
 - Hero image: Full-bleed, 1:1 ratio
+
 - Gallery: 3-4 additional angles below hero
+
 - Zoom on hover (not auto-zoom, user-initiated)
+
 - Lifestyle shot at bottom (artisan/context)
+
 - Background: Off-white
 
 **Details Section (Right, 40% width on desktop):**
+
 - Product name (Lora, 32px, Deep Indigo)
+
 - Urdu name (Noto Naskh, 18px, Medium Gray)
+
 - Price (Medium Gray, 18px, non-bold)
+
 - Collection label (Burnt Sienna badge)
+
 - Storytelling section (Max 100 words):
   - Origin: Where/when made
   - Materials: Specific details (e.g., "Organic cotton from Sindh")
   - Technique: Brief but respectful (e.g., "Hand-embroidered using traditional Balochi patterns")
   - Artisan: Name + region (if shared with customer permission)
+
 - Size/Options (minimal selectors)
+
 - **"Add to Wishlist" + "Add to Cart"** (Two CTAs, equal weight)
+
 - Shipping + Return info (secondary text)
+
 - Care instructions (expandable section)
+
 - **Trust element**: "Certificate of Authenticity included"
 
 ---
@@ -317,22 +425,37 @@ The homepage is a **cultural storytelling platform**, not a product listing ware
 ### Respectful Presentation of Balochi Patterns & Embroidery
 
 **DO:**
+
 - Name every pattern accurately (consult with Balochi artisans/historians)
+
 - Use Urdu names alongside English
+
 - Link pattern to region/tradition origin (e.g., "Gwadar Ajrak" not just "Ajrak")
+
 - Show close-up photography of embroidery detail (celebrates craftsmanship)
+
 - Credit individual artisans or cooperatives (with permission)
+
 - Explain technique without oversimplifying (e.g., not "tribal weaving" but "traditional indigo-resist weaving")
+
 - Feature artisan stories (short video or narrative) on limited/premium pieces
+
 - Mention UNESCO recognition or cultural significance where applicable
 
 **DON'T:**
+
 - Use words like "tribal," "exotic," "primitive," or "ethnic" (othering language)
+
 - Apply Western beauty standards to Balochi aesthetics (e.g., "modernized" or "simplified for contemporary taste")
+
 - Feature non-Balochi models in traditional pieces without clear context
+
 - Use Balochi culture as backdrop for lifestyle aesthetic (avoid "boho-chic" styling)
+
 - Over-explain patterns as if audience is unfamiliar (write for educated, curious audience)
+
 - Reduce embroidery complexity to "handmade charm" (it's technical mastery)
+
 - Photograph pieces in settings that misrepresent their cultural context (e.g., yoga studio shoot)
 
 ### Avoiding Over-Modernization
@@ -379,13 +502,14 @@ The homepage is a **cultural storytelling platform**, not a product listing ware
    - Link to cultural calendar if applicable (weddings, festivals)
 
 **Example Product Story Structure:**
-```
+
+``` text
 PRODUCT: Balochi Wedding Shawl (Orhni)
 ENGLISH NARRATIVE:
-"This hand-woven orhni represents six months of work by master weavers 
-in the Gwadar region. Traditionally draped at Balochi weddings, each 
-shawl carries patterns that tell family and regional heritage. This piece 
-uses organic cotton and natural indigo dyes, maintaining techniques 
+"This hand-woven orhni represents six months of work by master weavers
+in the Gwadar region. Traditionally draped at Balochi weddings, each
+shawl carries patterns that tell family and regional heritage. This piece
+uses organic cotton and natural indigo dyes, maintaining techniques
 unchanged for over two centuries."
 
 URDU: [Same narrative, equal prominence]
@@ -399,7 +523,8 @@ ORIGIN: Gwadar Weaving Collective, Balochistan
 ARTISAN: Bibi Fatima (Master Weaver, 30+ years experience)
 
 CARE: Hand wash in cool water, dry in shade, iron on reverse side
-```
+
+``` text
 
 ---
 
@@ -417,6 +542,7 @@ CARE: Hand wash in cool water, dry in shade, iron on reverse side
    - Jewelry & Accessories
    - Footwear
    - Limited Editions
+
 3. **Craft Stories** (Link to blog/editorial)
 4. **About Us** (Brand story, mission, values)
 5. **Contact** (Customer service)
@@ -425,15 +551,23 @@ CARE: Hand wash in cool water, dry in shade, iron on reverse side
 8. **Cart** (Bag icon with counter)
 
 **Secondary Navigation (Sidebar/Drawer on Mobile):**
+
 - Same structure, but organized vertically
+
 - Filter options under each collection (expandable)
+
 - All collapsed by default (minimal cognitive load)
 
 **Rules:**
+
 - Never more than 5-6 top-level menu items
+
 - Dropdowns max 5-6 items each (avoid overwhelming)
+
 - Search always visible (hub for discovery)
+
 - No mega-menus (feels commercial, not curated)
+
 - Breadcrumb trail on product pages (Context: Collection > Product)
 
 ### Mobile-First Shopping Experience
@@ -447,21 +581,33 @@ CARE: Hand wash in cool water, dry in shade, iron on reverse side
    - Image carousel (swipe-based, not thumbnails)
    - Details below (scrollable)
    - Floating "Add to Cart" button (sticky footer, always accessible)
+
 5. **Checkout** — Minimal fields, guest checkout option prominent
 
 **Mobile-Specific Rules:**
+
 - Button size: Minimum 44x44px (thumb-friendly)
+
 - Tap targets: 48x48px preferred for CTAs
+
 - Fonts: 16px minimum for form inputs (prevents auto-zoom)
+
 - Images: Optimized for mobile (fast loading, high quality)
+
 - No horizontal scrolling (ever)
+
 - Filters collapsible, not auto-expanded
+
 - Price always visible during scroll (sticky header or footer)
 
 **Connection/Speed Assumption:**
+
 - Design for 4G/3G (not just WiFi)
+
 - Heavy images load lazily
+
 - Core content loads instantly
+
 - "Adding to cart" feels instant (optimistic UI updates)
 
 ### Trust-Building Elements
@@ -521,34 +667,55 @@ CARE: Hand wash in cool water, dry in shade, iron on reverse side
 ### Component Library (Placeholder Guidance)
 
 **Buttons**
+
 - Primary: Deep Indigo background, Off-White text, 16px inter Medium, rounded corners (4px radius)
+
 - Secondary: Burnt Sienna outline, Deep Indigo text, 16px Inter Medium
+
 - Tertiary: Charcoal text only, on hover underline appears
+
 - Disabled: Medium Gray background, Light Gray text
 
 **Cards**
+
 - Padding: 24px
+
 - Border radius: 0px (cleaner, more editorial)
+
 - Shadow: Subtle (0 4px 12px rgba(0,0,0,0.08))
+
 - Background: Off-White on white, Charcoal on Deep Indigo backgrounds
 
 **Forms**
+
 - Input background: Light Gray (#e8e4df)
+
 - Border: 1px Warm Sand
+
 - Focus state: 2px Deep Indigo border
+
 - Error: Deep Red text below input
+
 - Label: Charcoal, 14px Inter Regular
 
 **Badges**
+
 - Burnt Sienna background, Off-White text
+
 - 12px Inter SemiBold
+
 - Padding: 6px 12px
+
 - Border radius: 2px (slight softness)
 
 **Modals/Dialogs**
+
 - Background: Off-White
+
 - Header: Deep Indigo, Lora serif
+
 - Close button: Charcoal X (top right)
+
 - Footer CTAs: Primary + Secondary buttons
 
 ---
@@ -558,18 +725,31 @@ CARE: Hand wash in cool water, dry in shade, iron on reverse side
 Before launching any page/feature, verify:
 
 - [ ] **Heritage Respect** — No othering language; authentic narratives
+
 - [ ] **Urdu Integration** — Equal visibility to English; proper typography
+
 - [ ] **Visual Hierarchy** — Clear distinction between H1, H2, H3 without clutter
+
 - [ ] **Whitespace** — Sections breathe; no cramped layouts
+
 - [ ] **Color Contrast** — WCAG AA minimum (preferably AAA)
+
 - [ ] **Mobile Responsive** — Tested on 375px, 768px, 1200px viewports
+
 - [ ] **Image Quality** — High-res, properly optimized, product details clear
+
 - [ ] **Trust Elements** — Story, artisan, materials, transparency visible
+
 - [ ] **Typography Precision** — Fonts match spec, line heights respected
+
 - [ ] **CTA Clarity** — Primary action obvious, no ambiguity
+
 - [ ] **Cultural Authenticity** — Balochi patterns named accurately, techniques respected
+
 - [ ] **Speed** — Images lazy-loaded, content prioritized, mobile-friendly
+
 - [ ] **Consistency** — Colors, spacing, typography follow foundation
+
 - [ ] **Accessibility** — Alt text on images, keyboard navigation works, screen-reader friendly
 
 ---
@@ -579,9 +759,13 @@ Before launching any page/feature, verify:
 This brand foundation is maintained in the SHALKAAR GitHub repository and serves as the single source of truth for all design decisions. All code changes are tracked via GitHub, with automated deployments to Vercel triggered from the main branch.
 
 **Key Points:**
+
 - Design specifications in this document are referenced during code review
+
 - Color values, typography rules, and spacing tokens are hardcoded into the design system
+
 - Changes to this foundation require team consensus and are merged via pull request
+
 - Vercel automatically deploys the latest approved design system to production
 
 ---
@@ -598,6 +782,7 @@ This is not a generic e-commerce platform. This is a **cultural archive and mark
 
 ---
 
-**Document Version:** 1.0  
-**Last Updated:** February 5, 2026  
+**Document Version:** 1.0
+
+**Last Updated:** February 5, 2026
 **Status:** Non-Negotiable Foundation — All future decisions subordinate to this document.

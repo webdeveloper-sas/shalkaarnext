@@ -1,0 +1,19 @@
+{
+  "name": "@shalkaar/deployment-tools",
+  "version": "1.0.0",
+  "description": "SHALKAAR Deployment Tools Package",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.2.10"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0"
+  }
+}

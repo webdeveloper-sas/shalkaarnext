@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import type { Product } from "@/lib/api";
 
-interface LocalCartItem {
+export interface LocalCartItem {
   id: string;
   productId: string;
   name: string;

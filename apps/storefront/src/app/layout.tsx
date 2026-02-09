@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { CartProvider } from "@/context/CartContext";
-import { UserProvider } from "@/context/UserContext";
-import { ThemeProvider } from "@/context/ThemeContext";
+import { AuthProvider } from "@/context/AuthContext";
+import { WishlistProvider } from "@/context/WishlistContext";
+import { PaymentProvider } from "@/context/PaymentContext";
+import { OrderProvider } from "@/context/OrderContext";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -36,11 +38,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" content="#2a1555" />
       </head>
       <body>
-        <ThemeProvider>
-          <UserProvider>
-            <CartProvider>{children}</CartProvider>
-          </UserProvider>
-        </ThemeProvider>
+        <AuthProvider>
+          <CartProvider>
+            <WishlistProvider>
+              <PaymentProvider>
+                <OrderProvider>{children}</OrderProvider>
+              </PaymentProvider>
+            </WishlistProvider>
+          </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );

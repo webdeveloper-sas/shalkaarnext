@@ -35,8 +35,15 @@
     }
   },
   "include": [
-    "**/*.ts",
-    "**/*.tsx"
+    "services/**/*.ts",
+    "packages/shared-types/**/*.ts",
+    "packages/shared-utils/**/*.ts",
+    "packages/shared-ui/**/*.tsx",
+    "packages/logging/**/*.ts",
+    "packages/security/**/*.ts",
+    "packages/resilience/**/*.ts",
+    "packages/config/**/*.ts",
+    "packages/deployment-tools/**/*.ts"
   ],
   "exclude": [
     "node_modules",

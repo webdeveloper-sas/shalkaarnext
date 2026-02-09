@@ -8,6 +8,7 @@
   ],
   "watchAssets": true,
   "compilerOptions": {
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "tsConfigPath": "tsconfig.build.json"
   }
 }

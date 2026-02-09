@@ -1,0 +1,19 @@
+{
+  "name": "@shalkaar/logging",
+  "version": "1.0.0",
+  "description": "SHALKAAR Logging Package",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.2.10"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0"
+  }
+}

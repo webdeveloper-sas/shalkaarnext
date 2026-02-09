@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { Product } from "@/lib/api";
 import { useCart } from "@/context/CartContext";
+import { trackAddToCart } from "@/lib/analytics";
 
 interface AddToCartSectionProps {
   product: Product;
@@ -45,6 +46,16 @@ export default function AddToCartSection({ product }: AddToCartSectionProps) {
 
     try {
       await addToCart(product, quantity);
+      
+      // Track analytics
+      trackAddToCart({
+        id: product.id,
+        name: product.name,
+        price: product.basePrice,
+        quantity,
+        currency: "USD",
+      });
+
       setMessage({
         type: "success",
         text: `Added ${quantity} item${quantity > 1 ? "s" : ""} to cart`,

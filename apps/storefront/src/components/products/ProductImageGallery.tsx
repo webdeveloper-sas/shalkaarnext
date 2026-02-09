@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import ImageGallery from "@/components/ImageGallery";
 
 interface ProductImageGalleryProps {
   productName: string;
@@ -11,8 +11,6 @@ export default function ProductImageGallery({
   productName,
   images = [],
 }: ProductImageGalleryProps) {
-  const [selectedImage, setSelectedImage] = useState(0);
-
   // Use placeholder images for now
   const displayImages =
     images.length > 0
@@ -25,38 +23,11 @@ export default function ProductImageGallery({
 
   return (
     <div className="w-full">
-      {/* Main Image */}
-      <div className="relative w-full aspect-square bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg overflow-hidden mb-4">
-        <img
-          src={displayImages[selectedImage]}
-          alt={`${productName} - Image ${selectedImage + 1}`}
-          className="w-full h-full object-cover"
-        />
-      </div>
-
-      {/* Thumbnail Gallery */}
-      {displayImages.length > 1 && (
-        <div className="grid grid-cols-4 gap-2">
-          {displayImages.map((image, idx) => (
-            <button
-              key={idx}
-              onClick={() => setSelectedImage(idx)}
-              className={`relative aspect-square rounded-lg overflow-hidden transition-all ${
-                selectedImage === idx
-                  ? "ring-2 ring-purple-600"
-                  : "ring-1 ring-gray-300 hover:ring-purple-400"
-              }`}
-              aria-label={`View image ${idx + 1}`}
-            >
-              <img
-                src={image}
-                alt={`${productName} - Thumbnail ${idx + 1}`}
-                className="w-full h-full object-cover"
-              />
-            </button>
-          ))}
-        </div>
-      )}
+      <ImageGallery
+        images={displayImages}
+        alt={productName}
+        productName={productName}
+      />
     </div>
   );
 }

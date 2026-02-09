@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@shalkaar/shared-types": ["../../packages/shared-types/src/index.ts"],
+      "@shalkaar/shared-utils": ["../../packages/shared-utils/src/index.ts"],
+      "@shalkaar/shared-ui": ["../../packages/shared-ui/src/index.tsx"],
+      "@shalkaar/api-client": ["../../packages/api-client/src/index.ts"],
+      "@shalkaar/config": ["../../packages/config/src/index.ts"],
+      "@shalkaar/logging": ["../../packages/logging/src/index.ts"],
+      "@shalkaar/resilience": ["../../packages/resilience/src/index.ts"],
+      "@shalkaar/security": ["../../packages/security/src/index.ts"],
+      "@shalkaar/deployment-tools": ["../../packages/deployment-tools/src/index.ts"]
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "@shalkaar/resilience",
+  "version": "1.0.0",
+  "description": "SHALKAAR Resilience Package",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.2.10",
+    "@shalkaar/logging": "workspace:*"
+  }
+}

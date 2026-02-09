@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "src/**/*",
+    "../../packages/logging/src/**/*.ts",
+    "../../packages/security/src/**/*.ts",
+    "../../packages/resilience/src/**/*.ts",
+    "../../packages/config/src/**/*.ts",
+    "../../packages/deployment-tools/src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.spec.ts",
+    "**/*.e2e.spec.ts"
+  ]
+}

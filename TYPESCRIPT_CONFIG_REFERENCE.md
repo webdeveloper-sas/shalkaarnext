@@ -1,3 +1,4 @@
+
 # Complete TypeScript Configuration Reference
 
 This document shows the full, corrected `tsconfig.json` files for all apps and services.
@@ -6,7 +7,7 @@ This document shows the full, corrected `tsconfig.json` files for all apps and s
 
 **File**: `/tsconfig.json`
 
-```json
+``` json
 {
   "compilerOptions": {
     "target": "ES2020",
@@ -53,12 +54,17 @@ This document shows the full, corrected `tsconfig.json` files for all apps and s
     "build"
   ]
 }
-```
+
+``` text
 
 **Key Features:**
+
 - Strict TypeScript mode for type safety
+
 - `baseUrl: "."` - resolves paths from monorepo root
+
 - `paths` - maps `@shalkaar/*` aliases to shared packages
+
 - All child tsconfig files inherit these settings
 
 ---
@@ -67,7 +73,7 @@ This document shows the full, corrected `tsconfig.json` files for all apps and s
 
 **File**: `/apps/storefront/tsconfig.json`
 
-```json
+``` json
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
@@ -104,21 +110,29 @@ This document shows the full, corrected `tsconfig.json` files for all apps and s
     "node_modules"
   ]
 }
-```
+
+``` text
 
 **Key Features:**
+
 - Extends root tsconfig for strict mode
+
 - `jsx: "preserve"` for Next.js
+
 - `moduleResolution: "bundler"` for Next.js bundling
+
 - Both local `@/*` and shared `@shalkaar/*` paths
+
 - Relative paths point from app directory to packages
 
 **Supported Imports:**
-```typescript
+
+``` typescript
 import { Button } from '@shalkaar/shared-ui'
 import { Product } from '@shalkaar/shared-types'
 import { useCart } from '@/hooks/useCart'
-```
+
+``` text
 
 ---
 
@@ -126,7 +140,7 @@ import { useCart } from '@/hooks/useCart'
 
 **File**: `/apps/admin/tsconfig.json`
 
-```json
+``` json
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
@@ -163,20 +177,27 @@ import { useCart } from '@/hooks/useCart'
     "node_modules"
   ]
 }
-```
+
+``` text
 
 **Key Features:**
+
 - Identical to storefront (same Next.js setup)
+
 - Extends root tsconfig
+
 - Local `@/*` for admin-specific imports
+
 - Shared `@shalkaar/*` for common packages
 
 **Supported Imports:**
-```typescript
+
+``` typescript
 import { Input, Badge } from '@shalkaar/shared-ui'
 import { OrderStatus } from '@shalkaar/shared-types'
 import { AdminContext } from '@/context/AdminContext'
-```
+
+``` text
 
 ---
 
@@ -184,7 +205,7 @@ import { AdminContext } from '@/context/AdminContext'
 
 **File**: `/services/api/tsconfig.json`
 
-```json
+``` json
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
@@ -218,70 +239,91 @@ import { AdminContext } from '@/context/AdminContext'
     "dist"
   ]
 }
-```
+
+``` text
 
 **Key Features:**
+
 - Extends root tsconfig
+
 - `moduleResolution: "node"` for Node.js/NestJS
+
 - `module: "commonjs"` for Node.js compatibility
+
 - `outDir: "dist"` and `rootDir: "src"` for compilation
+
 - `experimentalDecorators` and `emitDecoratorMetadata` for NestJS
+
 - Local `@/*` and shared `@shalkaar/*` paths
 
 **Supported Imports:**
-```typescript
+
+``` typescript
 import { User, Product } from '@shalkaar/shared-types'
 import { formatPrice, isValidEmail } from '@shalkaar/shared-utils'
 import { CreateProductDTO } from '@shalkaar/shared-types'
 import { ProductsService } from '@/modules/products/products.service'
-```
+
+``` text
 
 ---
 
 ## Path Resolution Summary
 
 ### Root Level Resolution
+
 From the monorepo root (`tsconfig.json`):
-```
+
+``` text
 baseUrl: "."
 @shalkaar/shared-types     → packages/shared-types/src/index.ts
 @shalkaar/shared-utils     → packages/shared-utils/src/index.ts
 @shalkaar/shared-ui        → packages/shared-ui/src/index.tsx
 @shalkaar/api-client       → packages/api-client/src/index.ts
-```
+
+``` text
 
 ### Storefront Resolution
+
 From `apps/storefront/tsconfig.json`:
-```
+
+``` text
 baseUrl: "."
 @/*                        → src/*
 @shalkaar/shared-types     → ../../packages/shared-types/src/index.ts
 @shalkaar/shared-utils     → ../../packages/shared-utils/src/index.ts
 @shalkaar/shared-ui        → ../../packages/shared-ui/src/index.tsx
 @shalkaar/api-client       → ../../packages/api-client/src/index.ts
-```
+
+``` text
 
 ### Admin Resolution
+
 From `apps/admin/tsconfig.json`:
-```
+
+``` text
 baseUrl: "."
 @/*                        → src/*
 @shalkaar/shared-types     → ../../packages/shared-types/src/index.ts
 @shalkaar/shared-utils     → ../../packages/shared-utils/src/index.ts
 @shalkaar/shared-ui        → ../../packages/shared-ui/src/index.tsx
 @shalkaar/api-client       → ../../packages/api-client/src/index.ts
-```
+
+``` text
 
 ### API Resolution
+
 From `services/api/tsconfig.json`:
-```
+
+``` text
 baseUrl: "."
 @/*                        → src/*
 @shalkaar/shared-types     → ../../packages/shared-types/src/index.ts
 @shalkaar/shared-utils     → ../../packages/shared-utils/src/index.ts
 @shalkaar/shared-ui        → ../../packages/shared-ui/src/index.tsx
 @shalkaar/api-client       → ../../packages/api-client/src/index.ts
-```
+
+``` text
 
 ---
 
@@ -290,10 +332,15 @@ baseUrl: "."
 After applying these changes, verify:
 
 - [ ] VS Code IntelliSense shows suggestions for `@shalkaar/` imports
+
 - [ ] No red squiggles on imports like `import { Button } from '@shalkaar/shared-ui'`
+
 - [ ] `pnpm type-check` runs without "Non-relative paths" errors
+
 - [ ] `pnpm build` completes successfully
+
 - [ ] Local `@/*` imports work in pages and components
+
 - [ ] Cross-package `@shalkaar/*` imports work in all apps and services
 
 ---
@@ -301,7 +348,8 @@ After applying these changes, verify:
 ## What This Enables
 
 ### Clean Imports Across the Monorepo
-```typescript
+
+``` typescript
 // Frontend
 import { Button, Input } from '@shalkaar/shared-ui'
 import { Product, Order } from '@shalkaar/shared-types'
@@ -313,25 +361,35 @@ import { formatPrice } from '@shalkaar/shared-utils'
 // Admin
 import { BRAND_COLORS } from '@shalkaar/shared-types'
 import { Badge } from '@shalkaar/shared-ui'
-```
+
+``` text
 
 ### No More Path Counting
+
 Before:
-```typescript
+
+``` typescript
 // ❌ Confusing relative paths
 import { Button } from '../../../packages/shared-ui/src'
-```
+
+``` text
 
 After:
-```typescript
+
+``` typescript
 // ✅ Clear, consistent paths
 import { Button } from '@shalkaar/shared-ui'
-```
+
+``` text
 
 ### Better Developer Experience
+
 - Autocomplete works correctly
+
 - No TypeScript errors in editor
+
 - Imports are self-documenting
+
 - Refactoring is safer
 
 ---

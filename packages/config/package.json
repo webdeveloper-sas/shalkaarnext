@@ -1,0 +1,20 @@
+{
+  "name": "@shalkaar/config",
+  "version": "1.0.0",
+  "description": "SHALKAAR Config Package",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.2.10",
+    "@nestjs/config": "^3.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0"
+  }
+}

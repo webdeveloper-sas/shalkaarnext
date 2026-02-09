@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "ts-node": {
     "compilerOptions": {
       "module": "commonjs"
@@ -11,22 +11,32 @@
     "lib": [
       "ES2020"
     ],
+    "types": [
+      "jest",
+      "node"
+    ],
     "moduleResolution": "node",
     "outDir": "dist",
     "skipLibCheck": true,
     "noImplicitAny": false,
     "strict": false,
-    "noEmitOnError": false,
-    /* baseUrl and paths enable cross-package imports.
-       @/* resolves to local src/ files, @shalkaar/* resolves to shared packages.
-       This allows the API to import types and utilities from shared packages. */
+    "noEmitOnError": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "declaration": false,
+    "declarationMap": false,
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@shalkaar/shared-types": ["../../packages/shared-types/src"],
-      "@shalkaar/shared-utils": ["../../packages/shared-utils/src"],
-      "@shalkaar/shared-ui": ["../../packages/shared-ui/src"],
-      "@shalkaar/api-client": ["../../packages/api-client/src"]
+      "@shalkaar/shared-types": ["../../packages/shared-types/src/index.ts"],
+      "@shalkaar/shared-utils": ["../../packages/shared-utils/src/index.ts"],
+      "@shalkaar/shared-ui": ["../../packages/shared-ui/src/index.tsx"],
+      "@shalkaar/api-client": ["../../packages/api-client/src/index.ts"],
+      "@shalkaar/config": ["../../packages/config/src/index.ts"],
+      "@shalkaar/logging": ["../../packages/logging/src/index.ts"],
+      "@shalkaar/resilience": ["../../packages/resilience/src/index.ts"],
+      "@shalkaar/security": ["../../packages/security/src/index.ts"],
+      "@shalkaar/deployment-tools": ["../../packages/deployment-tools/src/index.ts"]
     },
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
@@ -35,10 +45,12 @@
     "allowSyntheticDefaultImports": true
   },
   "include": [
-    "src/**/*"
+    "src/**/*.ts"
   ],
   "exclude": [
     "node_modules",
     "dist"
   ]
 }
+
+
