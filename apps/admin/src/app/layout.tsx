@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AdminProvider } from "@/context/AdminContext";
+import { AuthProvider } from "@/context/AuthContext";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -18,7 +19,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" content="#2a1555" />
       </head>
       <body>
-        <AdminProvider>{children}</AdminProvider>
+        <AuthProvider>
+          <AdminProvider>{children}</AdminProvider>
+        </AuthProvider>
       </body>
     </html>
   );

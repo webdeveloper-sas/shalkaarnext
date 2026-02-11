@@ -1,4 +1,6 @@
 {
+  /* TypeScript configuration for SHALKAAR monorepo
+     Updated: 2026-02-10 - Added apps directory includes for ESLint parser compatibility */
   "compilerOptions": {
     "target": "ES2020",
     "lib": [
@@ -36,6 +38,8 @@
   },
   "include": [
     "services/**/*.ts",
+    "apps/**/*.ts",
+    "apps/**/*.tsx",
     "packages/shared-types/**/*.ts",
     "packages/shared-utils/**/*.ts",
     "packages/shared-ui/**/*.tsx",
